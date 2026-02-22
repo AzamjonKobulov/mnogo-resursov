@@ -58,7 +58,7 @@
           <div class="relative lg:hidden">
             <button
               type="button"
-              class="p-1 -mr-1 rounded-lg hover:bg-brand-gray-light smooth"
+              class="p-1 -mr-1 rounded-2xl hover:bg-brand-gray-light smooth"
               @click="mobileMenuOpen = !mobileMenuOpen"
               :aria-expanded="mobileMenuOpen"
               aria-label="Меню"
@@ -174,8 +174,12 @@
       <section id="about-us" class="pt-8 lg:pt-10 pb-8 lg:pb-15">
         <div class="container-base">
           <div class="space-y-8 lg:space-y-10">
-            <div class="flex-base gap-10">
-              <button class="button_4 flex-base gap-2.5">
+            <div
+              class="grid grid-cols-2 sm:flex-base gap-3 xs:gap-5 md:gap-7 lg:gap-10"
+            >
+              <button
+                class="text-xs 2xs:text-base lg:text-lg button_4 flex-center gap-2.5"
+              >
                 <svg
                   width="24"
                   height="24"
@@ -201,7 +205,9 @@
 
                 <span>К Поиску</span>
               </button>
-              <button class="button_4 flex-base gap-2.5">
+              <button
+                class="text-xs 2xs:text-base lg:text-lg button_4 flex-base gap-2.5"
+              >
                 Помощь в подборе
               </button>
             </div>
@@ -236,45 +242,58 @@
                 <thead>
                   <tr>
                     <th
-                      class="border border-brand-gray-light-2 py-3 xl:py-5"
+                      class="border border-brand-gray-light-2 py-1.5 xs:py-3 xl:py-5"
                     ></th>
-                    <th class="border border-brand-gray-light-2 py-3 xl:py-5">
+                    <th
+                      class="border border-brand-gray-light-2 py-1.5 xs:py-3 xl:py-5"
+                    >
                       <img
                         src="./assets/svgs/gas-pipe-sm.svg"
                         alt="Gas Pipe"
-                        class="size-7 xl:size-10 shrink-0 mx-auto"
+                        class="size-5 xs:size-7 xl:size-10 shrink-0 mx-auto"
                       />
                     </th>
-                    <th class="border border-brand-gray-light-2 py-3 xl:py-5">
+                    <th
+                      class="border border-brand-gray-light-2 py-1.5 xs:py-3 xl:py-5"
+                    >
                       <img
                         src="./assets/svgs/water-sm.svg"
                         alt="Water"
-                        class="size-7 xl:size-10 shrink-0 mx-auto"
+                        class="size-5 xs:size-7 xl:size-10 shrink-0 mx-auto"
                       />
                     </th>
-                    <th class="border border-brand-gray-light-2 py-3 xl:py-5">
+                    <th
+                      class="border border-brand-gray-light-2 py-1.5 xs:py-3 xl:py-5"
+                    >
                       <img
                         src="./assets/svgs/pipe-thin-sm.svg"
                         alt="Pipe Thin"
-                        class="size-7 xl:size-10 shrink-0 mx-auto"
+                        class="size-5 xs:size-7 xl:size-10 shrink-0 mx-auto"
                       />
                     </th>
-                    <th class="border border-brand-gray-light-2 py-3 xl:py-5">
+                    <th
+                      class="border border-brand-gray-light-2 py-1.5 xs:py-3 xl:py-5"
+                    >
                       <img
                         src="./assets/svgs/heating-square-sm.svg"
                         alt="Heating Square"
-                        class="size-7 xl:size-10 shrink-0 mx-auto"
+                        class="size-5 xs:size-7 xl:size-10 shrink-0 mx-auto"
                       />
                     </th>
-                    <th class="border border-brand-gray-light-2 py-3 xl:py-5">
+                    <th
+                      class="border border-brand-gray-light-2 py-1.5 xs:py-3 xl:py-5"
+                    >
                       <img
                         src="./assets/svgs/electricity-sm.svg"
                         alt="Electricity"
-                        class="size-7 xl:size-10 shrink-0 mx-auto"
+                        class="size-5 xs:size-7 xl:size-10 shrink-0 mx-auto"
                       />
                     </th>
-                    <th class="border border-brand-gray-light-2 py-3 xl:py-5">
-                      <span class="text_1 text-brand-gray-dark"
+                    <th
+                      class="border border-brand-gray-light-2 py-1.5 xs:py-3 xl:py-5"
+                    >
+                      <span
+                        class="xs:text-base xl:text-lg 3xl:text-2xl text_1 text-brand-gray-dark"
                         >Наличие СРО</span
                       >
                     </th>
@@ -282,96 +301,130 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <th class="border border-brand-gray-light-2 py-3 xl:py-5">
-                      <span class="text_1 text-brand-gray-dark">СМР</span>
+                    <th
+                      class="border border-brand-gray-light-2 py-1.5 xs:py-3 xl:py-5"
+                    >
+                      <span
+                        class="xs:text-base xl:text-lg 3xl:text-2xl text_1 text-brand-gray-dark"
+                        >СМР</span
+                      >
                     </th>
-                    <td class="border border-brand-gray-light-2 py-3 xl:py-5">
+                    <td
+                      class="border border-brand-gray-light-2 py-1.5 xs:py-3 xl:py-5"
+                    >
                       <img
                         src="./assets/svgs/tick.svg"
                         alt="Tick"
-                        class="size-7 xl:size-10 shrink-0 mx-auto"
+                        class="size-5 xs:size-7 xl:size-10 shrink-0 mx-auto"
                       />
                     </td>
-                    <td class="border border-brand-gray-light-2 py-3 xl:py-5">
+                    <td
+                      class="border border-brand-gray-light-2 py-1.5 xs:py-3 xl:py-5"
+                    >
                       <img
                         src="./assets/svgs/minus.svg"
                         alt="Minus"
-                        class="size-7 xl:size-10 shrink-0 mx-auto"
+                        class="size-5 xs:size-7 xl:size-10 shrink-0 mx-auto"
                       />
                     </td>
-                    <td class="border border-brand-gray-light-2 py-3 xl:py-5">
+                    <td
+                      class="border border-brand-gray-light-2 py-1.5 xs:py-3 xl:py-5"
+                    >
                       <img
                         src="./assets/svgs/tick.svg"
                         alt="Tick"
-                        class="size-7 xl:size-10 shrink-0 mx-auto"
+                        class="size-5 xs:size-7 xl:size-10 shrink-0 mx-auto"
                       />
                     </td>
-                    <td class="border border-brand-gray-light-2 py-3 xl:py-5">
+                    <td
+                      class="border border-brand-gray-light-2 py-1.5 xs:py-3 xl:py-5"
+                    >
                       <img
                         src="./assets/svgs/minus.svg"
                         alt="Minus"
-                        class="size-7 xl:size-10 shrink-0 mx-auto"
+                        class="size-5 xs:size-7 xl:size-10 shrink-0 mx-auto"
                       />
                     </td>
-                    <td class="border border-brand-gray-light-2 py-3 xl:py-5">
+                    <td
+                      class="border border-brand-gray-light-2 py-1.5 xs:py-3 xl:py-5"
+                    >
                       <img
                         src="./assets/svgs/tick.svg"
                         alt="Tick"
-                        class="size-7 xl:size-10 shrink-0 mx-auto"
+                        class="size-5 xs:size-7 xl:size-10 shrink-0 mx-auto"
                       />
                     </td>
-                    <td class="border border-brand-gray-light-2 py-3 xl:py-5">
+                    <td
+                      class="border border-brand-gray-light-2 py-1.5 xs:py-3 xl:py-5"
+                    >
                       <img
                         src="./assets/svgs/minus.svg"
                         alt="Minus"
-                        class="size-7 xl:size-10 shrink-0 mx-auto"
+                        class="size-5 xs:size-7 xl:size-10 shrink-0 mx-auto"
                       />
                     </td>
                   </tr>
                   <tr>
-                    <th class="border border-brand-gray-light-2 py-3 xl:py-5">
-                      <span class="text_1 text-brand-gray-dark">ПИР / ПСД</span>
+                    <th
+                      class="border border-brand-gray-light-2 py-1.5 xs:py-3 xl:py-5"
+                    >
+                      <span
+                        class="xs:text-base xl:text-lg 3xl:text-2xl text_1 text-brand-gray-dark"
+                        >ПИР / ПСД</span
+                      >
                     </th>
-                    <td class="border border-brand-gray-light-2 py-3 xl:py-5">
+                    <td
+                      class="border border-brand-gray-light-2 py-1.5 xs:py-3 xl:py-5"
+                    >
                       <img
                         src="./assets/svgs/minus.svg"
                         alt="Minus"
-                        class="size-7 xl:size-10 shrink-0 mx-auto"
+                        class="size-5 xs:size-7 xl:size-10 shrink-0 mx-auto"
                       />
                     </td>
-                    <td class="border border-brand-gray-light-2 py-3 xl:py-5">
+                    <td
+                      class="border border-brand-gray-light-2 py-1.5 xs:py-3 xl:py-5"
+                    >
                       <img
                         src="./assets/svgs/tick.svg"
                         alt="Tick"
-                        class="size-7 xl:size-10 shrink-0 mx-auto"
+                        class="size-5 xs:size-7 xl:size-10 shrink-0 mx-auto"
                       />
                     </td>
-                    <td class="border border-brand-gray-light-2 py-3 xl:py-5">
+                    <td
+                      class="border border-brand-gray-light-2 py-1.5 xs:py-3 xl:py-5"
+                    >
                       <img
                         src="./assets/svgs/minus.svg"
                         alt="Minus"
-                        class="size-7 xl:size-10 shrink-0 mx-auto"
+                        class="size-5 xs:size-7 xl:size-10 shrink-0 mx-auto"
                       />
                     </td>
-                    <td class="border border-brand-gray-light-2 py-3 xl:py-5">
+                    <td
+                      class="border border-brand-gray-light-2 py-1.5 xs:py-3 xl:py-5"
+                    >
                       <img
                         src="./assets/svgs/tick.svg"
                         alt="Tick"
-                        class="size-7 xl:size-10 shrink-0 mx-auto"
+                        class="size-5 xs:size-7 xl:size-10 shrink-0 mx-auto"
                       />
                     </td>
-                    <td class="border border-brand-gray-light-2 py-3 xl:py-5">
+                    <td
+                      class="border border-brand-gray-light-2 py-1.5 xs:py-3 xl:py-5"
+                    >
                       <img
                         src="./assets/svgs/minus.svg"
                         alt="Minus"
-                        class="size-7 xl:size-10 shrink-0 mx-auto"
+                        class="size-5 xs:size-7 xl:size-10 shrink-0 mx-auto"
                       />
                     </td>
-                    <td class="border border-brand-gray-light-2 py-3 xl:py-5">
+                    <td
+                      class="border border-brand-gray-light-2 py-1.5 xs:py-3 xl:py-5"
+                    >
                       <img
                         src="./assets/svgs/tick.svg"
                         alt="Tick"
-                        class="size-7 xl:size-10 shrink-0 mx-auto"
+                        class="size-5 xs:size-7 xl:size-10 shrink-0 mx-auto"
                       />
                     </td>
                   </tr>
@@ -388,23 +441,31 @@
           class="container-base grid lg:grid-cols-2 gap-10 lg:gap-15 2xl:gap-x-50 min-w-0"
         >
           <!-- About -->
-          <div class="space-y-6 lg:space-y-10 min-w-0">
+          <div class="space-y-3 xs:space-y-6 lg:space-y-10 min-w-0">
             <h4>О компании</h4>
             <div
-              class="space-y-5 bg-white rounded-brand-3xl p-6 xl:p-10 min-w-0"
+              class="space-y-5 bg-white rounded-2xl sm:rounded-brand-3xl p-4 xs:p-6 xl:p-10 min-w-0"
             >
               <h4>Общество с ограниченной ответственностью «МачЭнерджи»</h4>
               <div class="space-y-3 lg:space-y-5">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                  <p class="text_1 text-brand-gray-dark">Сайт</p>
+                <div
+                  class="grid grid-cols-1 md:grid-cols-2 gap-2 xs:gap-5 md:gap-10"
+                >
+                  <p class="text-xs 2xs:text-sm sm:text_1 text-brand-gray-dark">
+                    Сайт
+                  </p>
                   <a
                     href="name.ru"
-                    class="text_2 text-brand-blue hover:underline underline-offset-1"
+                    class="text-xs 2xs:text-sm sm:text_2 text-brand-blue hover:underline underline-offset-1"
                     >name.ru</a
                   >
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                  <p class="text_1 text-brand-gray-dark">Социальные сети</p>
+                <div
+                  class="grid grid-cols-1 md:grid-cols-2 gap-2 xs:gap-5 md:gap-10"
+                >
+                  <p class="text-xs 2xs:text-sm sm:text_1 text-brand-gray-dark">
+                    Социальные сети
+                  </p>
                   <div class="flex-base gap-5 lg:*:gap-10">
                     <a href="#" class="shrink-0 hover:scale-125 smooth">
                       <img
@@ -429,52 +490,78 @@
                     </a>
                   </div>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                  <p class="text_1 text-brand-gray-dark">Телефон</p>
+                <div
+                  class="grid grid-cols-1 md:grid-cols-2 gap-2 xs:gap-5 md:gap-10"
+                >
+                  <p class="text-xs 2xs:text-sm sm:text_1 text-brand-gray-dark">
+                    Телефон
+                  </p>
                   <a
                     href="tel:+79219837215"
-                    class="text_2 text-brand-dark hover:underline underline-offset-1"
+                    class="text-xs 2xs:text-sm sm:text_2 text-brand-dark hover:underline underline-offset-1"
                     >+7 (921) 983-72-15</a
                   >
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                  <p class="text_1 text-brand-gray-dark">Электронная почта</p>
+                <div
+                  class="grid grid-cols-1 md:grid-cols-2 gap-2 xs:gap-5 md:gap-10"
+                >
+                  <p class="text-xs 2xs:text-sm sm:text_1 text-brand-gray-dark">
+                    Электронная почта
+                  </p>
                   <a
                     href="mailto:mail@name.ru"
-                    class="text_2 text-brand-blue hover:underline underline-offset-1"
+                    class="text-xs 2xs:text-sm sm:text_2 text-brand-blue hover:underline underline-offset-1"
                     >mail@name.ru
                   </a>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                  <p class="text_1 text-brand-gray-dark">Категория</p>
-                  <p class="text_2 text-brand-gray-blue">Подрядчик</p>
+                <div
+                  class="grid grid-cols-1 md:grid-cols-2 gap-2 xs:gap-5 md:gap-10"
+                >
+                  <p class="text-xs 2xs:text-sm sm:text_1 text-brand-gray-dark">
+                    Категория
+                  </p>
+                  <p class="text-xs 2xs:text-sm sm:text_2 text-brand-gray-blue">
+                    Подрядчик
+                  </p>
                 </div>
                 <div class="grid grid-cols-2 gap-10">
-                  <p class="text_1 text-brand-gray-dark">Рейтинг надежности</p>
-                  <p class="text_2 text-brand-blue">
+                  <p class="text-xs 2xs:text-sm sm:text_1 text-brand-gray-dark">
+                    Рейтинг надежности
+                  </p>
+                  <p class="text-xs 2xs:text-sm sm:text_2 text-brand-blue">
                     <span class="text-brand-dark">ААА</span> (подробнее)
                   </p>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                  <p class="text_1 text-brand-gray-dark">Срок ответа</p>
-                  <p class="text_2 text-brand-dark">2 дня</p>
+                <div
+                  class="grid grid-cols-1 md:grid-cols-2 gap-2 xs:gap-5 md:gap-10"
+                >
+                  <p class="text-xs 2xs:text-sm sm:text_1 text-brand-gray-dark">
+                    Срок ответа
+                  </p>
+                  <p class="text-xs 2xs:text-sm sm:text_2 text-brand-dark">
+                    2 дня
+                  </p>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                  <p class="text_1 text-brand-gray-dark">
+                <div
+                  class="grid grid-cols-1 md:grid-cols-2 gap-2 xs:gap-5 md:gap-10"
+                >
+                  <p class="text-xs 2xs:text-sm sm:text_1 text-brand-gray-dark">
                     Объем выполняемых работ, ₽
                   </p>
-                  <p class="text_2 text-brand-dark">от 1 млн</p>
+                  <p class="text-xs 2xs:text-sm sm:text_2 text-brand-dark">
+                    от 1 млн
+                  </p>
                 </div>
-                <div class="grid grid-cols-2 gap-10">
-                  <p class="text_1 text-brand-gray-dark">
+                <div class="grid grid-cols-2 gap-2 xs:gap-5 md:gap-10 gap-10">
+                  <p class="text-xs 2xs:text-sm sm:text_1 text-brand-gray-dark">
                     Территория работы
-                    <button class="text-brand-blue font-normal">
+                    <button class="text-brand-blue font-normal text-left">
                       (показать на карте)
                     </button>
                   </p>
                   <div class="space-y-1" x-data="{ expanded: false }">
                     <p
-                      class="text_2 text-brand-dark transition-[line-clamp] duration-200"
+                      class="text-xs 2xs:text-sm sm:text_2 text-brand-dark transition-[line-clamp] duration-200"
                       :class="expanded ? 'line-clamp-none' : 'line-clamp-2'"
                     >
                       Санкт-Петербург, Всеволожский, Ломоносовский sdfsdfssdf
@@ -517,45 +604,61 @@
           </div>
 
           <!-- Details -->
-          <div class="space-y-6 lg:space-y-10 min-w-0">
+          <div class="space-y-3 xs:space-y-6 lg:space-y-10 min-w-0">
             <h4>Реквизиты</h4>
-            <div class="bg-white rounded-brand-3xl p-6 xl:p-10 min-w-0">
+            <div
+              class="bg-white rounded-2xl sm:rounded-brand-3xl p-4 sm:p-6 xl:p-10 min-w-0"
+            >
               <div class="space-y-3 lg:space-y-5">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                  <p class="text_1 text-brand-gray-dark">ОГРН</p>
-                  <p class="text_2 text-brand-gray-blue">1184704017222</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 xs:gap-5 md:gap-10">
+                  <p class="text-sm sm:text_1 text-brand-gray-dark">ОГРН</p>
+                  <p class="text-xs 2xs:text-sm sm:text_2 text-brand-gray-blue">
+                    1184704017222
+                  </p>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                  <p class="text_1 text-brand-gray-dark">ИНН</p>
-                  <p class="text_2 text-brand-gray-blue">4703159440</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 xs:gap-5 md:gap-10">
+                  <p class="text-sm sm:text_1 text-brand-gray-dark">ИНН</p>
+                  <p class="text-xs 2xs:text-sm sm:text_2 text-brand-gray-blue">
+                    4703159440
+                  </p>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                  <p class="text_1 text-brand-gray-dark">КПП</p>
-                  <p class="text_2 text-brand-gray-blue">470301001</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 xs:gap-5 md:gap-10">
+                  <p class="text-sm sm:text_1 text-brand-gray-dark">КПП</p>
+                  <p class="text-xs 2xs:text-sm sm:text_2 text-brand-gray-blue">
+                    470301001
+                  </p>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                  <p class="text_1 text-brand-gray-dark">Дата регистрации</p>
-                  <p class="text_2 text-brand-gray-blue">01.04.2025</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 xs:gap-5 md:gap-10">
+                  <p class="text-sm sm:text_1 text-brand-gray-dark">
+                    Дата регистрации
+                  </p>
+                  <p class="text-xs 2xs:text-sm sm:text_2 text-brand-gray-blue">
+                    01.04.2025
+                  </p>
                 </div>
-                <div class="flex-center pt-5 pb-7.5">
-                  <button class="button_1 mx-auto">
+                <div class="flex-center xs:pt-5 sm:pb-7.5">
+                  <button
+                    class="text-xs 2xs:text-sm sm:text_1 button_1 mx-auto"
+                  >
                     Получить подробную выписку
                   </button>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                  <p class="text_1 text-brand-gray-dark">Юридический адрес</p>
-                  <p class="text_2 text-brand-gray-blue">
+                <div class="grid grid-cols-1 md:grid-cols-2 xs:gap-5 md:gap-10">
+                  <p class="text-sm sm:text_1 text-brand-gray-dark">
+                    Юридический адрес
+                  </p>
+                  <p class="text-xs 2xs:text-sm sm:text_2 text-brand-gray-blue">
                     Санкт-Петербург, Дворцовая площадь д. 1
                   </p>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                  <p class="text_1 text-brand-gray-dark">
+                <div class="grid grid-cols-1 md:grid-cols-2 xs:gap-5 md:gap-10">
+                  <p class="text-sm sm:text_1 text-brand-gray-dark">
                     Адреса и телефоны филиалов
                   </p>
                   <div class="space-y-1" x-data="{ expanded: false }">
                     <p
-                      class="text_2 text-brand-dark transition-[line-clamp] duration-200"
+                      class="text-xs 2xs:text-sm sm:text_2 text-brand-dark transition-[line-clamp] duration-200"
                       :class="expanded ? 'line-clamp-none' : 'line-clamp-6'"
                     >
                       Санкт-Петербург, Дворцовая площадь д. 1, тел.:
@@ -567,7 +670,7 @@
                     </p>
                     <button
                       type="button"
-                      class="flex-base gap-2.5 text_2 text-brand-blue group"
+                      class="flex-base gap-2.5 text-xs 2xs:text-sm sm:text_2 text-brand-blue group"
                       @click="expanded = !expanded"
                     >
                       <span x-text="expanded ? 'свернуть' : 'подробнее'"></span>
@@ -604,19 +707,19 @@
 
           <!-- Reviews-->
           <div
-            class="space-y-6 lg:space-y-10 min-w-0"
+            class="space-y-3 xs:space-y-6 lg:space-y-10 min-w-0"
             x-data="reviewsSwiper()"
             x-init="$nextTick(() => initSwiper())"
           >
             <h4>Отзывы</h4>
             <!-- Reviews Swiper -->
             <div
-              class="swiper reviews-swiper overflow-hidden rounded-brand-3xl min-w-0"
+              class="swiper reviews-swiper overflow-hidden rounded-3xl sm:rounded-3xl lg:rounded-brand-3xl min-w-0"
             >
               <div class="swiper-wrapper">
                 <template x-for="review in reviews" :key="review.title">
                   <div
-                    class="swiper-slide bg-white rounded-3xl lg:rounded-brand-3xl p-7 lg:p-10"
+                    class="swiper-slide bg-white rounded-lg sm:rounded-3xl lg:rounded-brand-3xl p-4 sm:p-7 lg:p-10"
                   >
                     <div
                       class="h-full flex flex-col justify-between space-y-6 lg:space-y-10"
@@ -646,8 +749,8 @@
                             x-text="review.authRole"
                           ></p>
                         </div>
-                        <div class="space-y-2">
-                          <div class="flex-base gap-2.5">
+                        <div class="sm:space-y-2">
+                          <div class="flex-base gap-1 sm:gap-2.5">
                             <template x-for="i in 5" :key="i">
                               <svg
                                 width="32"
@@ -656,7 +759,7 @@
                                 fill="none"
                                 xmlns="http://www.w3.org/2000/svg"
                                 aria-hidden="true"
-                                class="size-6"
+                                class="size-4 sm:size-6"
                               >
                                 <path
                                   d="M15.999 2.6665L20.119 11.0132L29.3323 12.3598L22.6656 18.8532L24.239 28.0265L15.999 23.6932L7.75896 28.0265L9.33229 18.8532L2.66562 12.3598L11.879 11.0132L15.999 2.6665Z"
@@ -685,7 +788,9 @@
 
             <!-- Open Leave Review Modal & Swiper Navigation Buttons -->
             <div class="flex-between">
-              <button class="button_5">Оставить отзыв</button>
+              <button class="text-xs 2xs:text-sm sm:text_7 button_5">
+                Оставить отзыв
+              </button>
 
               <div class="flex-base gap-3 lg:gap-6.5">
                 <button
@@ -758,7 +863,7 @@
           <div class="space-y-6 lg:space-y-10">
             <h4>Примечания</h4>
             <div
-              class="bg-white text-brand-dark rounded-brand-3xl p-6 xl:p-10"
+              class="bg-white text-brand-dark rounded-2xl sm:rounded-brand-3xl p-4 sm:p-6 xl:p-10"
               x-data="{ expanded: false }"
             >
               <p class="text_1 mb-5">Дополнительная информация о компании</p>
