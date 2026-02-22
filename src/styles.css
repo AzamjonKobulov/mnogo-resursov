@@ -27,7 +27,7 @@
   --radius-brand-base: 18px;
   --radius-brand-3xl: 30px;
 
-  --background-image-hero: url("/public/assets/images/hero.png");
+  --background-image-hero: url("./assets/images/hero.png");
 }
 
 @layer base {
