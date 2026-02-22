@@ -3,6 +3,12 @@
  * Requires: Swiper (loaded before this), Alpine.js (loaded after this)
  */
 document.addEventListener("alpine:init", () => {
+  // Scroll store for header shadow (scrollY > 64 or mobile menu open)
+  Alpine.store("scroll", { y: 0 });
+  const setScrollY = () => (Alpine.store("scroll").y = window.scrollY ?? window.pageYOffset);
+  setScrollY();
+  window.addEventListener("scroll", setScrollY, { passive: true });
+
   Alpine.data("reviewsSwiper", () => ({
     swiper: null,
     isBeginning: true,

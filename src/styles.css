@@ -32,6 +32,10 @@
 }
 
 @layer base {
+  [x-cloak] {
+    display: none !important;
+  }
+
   body {
     @apply font-inter text-brand-dark overflow-x-hidden;
   }
