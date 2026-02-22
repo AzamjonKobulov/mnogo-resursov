@@ -526,12 +526,12 @@
               <div class="swiper-wrapper">
                 <template x-for="review in reviews" :key="review.title">
                   <div
-                    class="swiper-slide h-auto! bg-brand-gray-light-2 rounded-3xl lg:rounded-brand-3xl p-7 lg:p-10"
+                    class="swiper-slide h-auto! bg-brand-gray-light-2 rounded-brand-base xs:rounded-3xl lg:rounded-brand-3xl p-4 sm:p-7 lg:p-10"
                   >
                     <div
                       class="h-full flex flex-col justify-between space-y-3 lg:space-y-5"
                     >
-                      <div class="space-y-5">
+                      <div class="space-y-3 xs:space-y-5">
                         <div class="flex-base gap-2.5">
                           <template x-for="i in 5" :key="i">
                             <svg
@@ -541,7 +541,7 @@
                               fill="none"
                               xmlns="http://www.w3.org/2000/svg"
                               aria-hidden="true"
-                              class="size-6 lg:size-auto"
+                              class="size-5 xs:size-6 lg:size-auto"
                             >
                               <path
                                 d="M15.999 2.6665L20.119 11.0132L29.3323 12.3598L22.6656 18.8532L24.239 28.0265L15.999 23.6932L7.75896 28.0265L9.33229 18.8532L2.66562 12.3598L11.879 11.0132L15.999 2.6665Z"
@@ -555,11 +555,11 @@
                         </div>
                         <h4 x-text="review.title"></h4>
                         <p
-                          class="text_2 text-brand-gray-dark"
+                          class="xs:text-base lg:text-lg 3xl:text-2xl text_2 text-brand-gray-dark pt-2 sm:pt-0"
                           x-text="review.text"
                         ></p>
                       </div>
-                      <div class="text_2">
+                      <div class="text_2 pt-2 sm:pt-0">
                         <p x-text="review.author"></p>
                         <p
                           class="text-brand-gray-dark"
