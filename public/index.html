@@ -136,13 +136,28 @@
       >
         <ul class="text_4 flex flex-col gap-6">
           <li>
-            <a href="/" class="hover:underline underline-offset-1 block py-1" @click="mobileMenuOpen = false">О платформе</a>
+            <a
+              href="/"
+              class="hover:underline underline-offset-1 block py-1"
+              @click="mobileMenuOpen = false"
+              >О платформе</a
+            >
           </li>
           <li>
-            <a href="/" class="hover:underline underline-offset-1 block py-1" @click="mobileMenuOpen = false">Присоединиться</a>
+            <a
+              href="/"
+              class="hover:underline underline-offset-1 block py-1"
+              @click="mobileMenuOpen = false"
+              >Присоединиться</a
+            >
           </li>
           <li>
-            <a href="/" class="hover:underline underline-offset-1 block py-1" @click="mobileMenuOpen = false">Помощь в подборе</a>
+            <a
+              href="/"
+              class="hover:underline underline-offset-1 block py-1"
+              @click="mobileMenuOpen = false"
+              >Помощь в подборе</a
+            >
           </li>
         </ul>
         <button class="button_1 mt-8 w-full" @click="mobileMenuOpen = false">
@@ -501,7 +516,7 @@
       <section id="users-reviews" class="pb-10 sm:pb-16 md:pb-25 lg:pb-50">
         <div
           class="container-base"
-          x-data="reviewsSwiper()"
+          x-data="homeReviewsSwiper()"
           x-init="$nextTick(() => initSwiper())"
         >
           <div class="xl:space-y-15">
@@ -548,7 +563,7 @@
                         <p x-text="review.author"></p>
                         <p
                           class="text-brand-gray-dark"
-                          x-text="review.subtitle"
+                          x-text="review.authRole"
                         ></p>
                       </div>
                     </div>

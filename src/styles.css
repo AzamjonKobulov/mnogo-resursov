@@ -75,7 +75,7 @@
 }
 
 @utility text_1 {
-  @apply font-semibold leading-5.5 md:text-lg/6.5 xl:text-xl/7 3xl:text-[26px]/8.5;
+  @apply font-medium leading-5.5 md:text-lg/6.5 xl:text-xl/7 3xl:text-[26px]/8.5;
 }
 
 @utility text_2 {
@@ -136,7 +136,7 @@
 .button_1,
 .button_2,
 .button_3,
-.button-4,
+.button_4,
 .button_5,
 .button_6 {
   @apply font-semibold border border-brand-blue bg-brand-blue text-white hover:bg-white hover:text-brand-gray hover:border-brand-gray smooth;
