@@ -132,7 +132,7 @@
         x-transition:leave="ease-in duration-200"
         x-transition:leave-start="opacity-100 translate-x-0"
         x-transition:leave-end="opacity-0 translate-x-full"
-        class="fixed top-15.5 sm:top-18 right-0 h-screen w-full max-w-[min(20rem,85vw)] bg-white shadow-xl flex flex-col pt-24 pb-8 px-6"
+        class="fixed top-15.5 sm:top-18 right-0 h-screen w-full max-w-[min(20rem,85vw)] bg-white shadow-xl flex flex-col py-8 px-6"
         role="dialog"
         aria-modal="true"
         aria-label="Меню"
@@ -238,7 +238,7 @@
               </button>
               <button
                 type="button"
-                class="text-xs 2xs:text-base lg:text-lg button_4 flex-base gap-2.5"
+                class="text-xs 2xs:text-base lg:text-lg button_4 flex-center gap-2.5"
                 @click="requestModalOpen = true"
               >
                 Помощь в подборе
@@ -479,7 +479,7 @@
                     >
                       <span
                         class="inline-block cursor-default xs:text-base xl:text-lg 3xl:text-2xl text_1 text-brand-gray-dark"
-                        @mouseenter="showCardTooltip($event, 'Проектно-изыскательские работы / Проектно-сметная документация', false, true)"
+                        @mouseenter="showCardTooltip($event, 'Проектно-изыскательские работы', false, true)"
                         @mouseleave="hideCardTooltip()"
                       >
                         ПИР / ПСД
@@ -592,7 +592,7 @@
           x-transition:enter-end="opacity-100"
           x-transition:leave="transition ease-in duration-100"
           class="fixed z-[100] pointer-events-none px-3 py-2 bg-white border border-brand-gray rounded-lg text_1 text-brand-gray-dark shadow-md"
-          :class="cardTooltip.wide ? 'max-w-64 whitespace-normal text-center' : 'whitespace-nowrap'"
+          :class="cardTooltip.wide ? 'min-w-48 max-w-80 whitespace-normal text-center' : 'whitespace-nowrap'"
           :style="`left: ${cardTooltip.x}px; top: ${cardTooltip.y}px; transform: translate(-50%, ${cardTooltip.above ? '-100%' : '0'});`"
         >
           <span x-text="cardTooltip.text"></span>

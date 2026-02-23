@@ -14,6 +14,19 @@
     x-data="{ mobileMenuOpen: false }"
     x-effect="document.body.style.overflow = mobileMenuOpen ? 'hidden' : ''"
   >
+    <!-- Shared SVG symbols (select chevron) -->
+    <svg class="absolute w-0 h-0 overflow-hidden" aria-hidden="true">
+      <symbol id="icon-select-chevron" viewBox="0 0 17 10">
+        <path
+          d="M15.7945 1L8.39726 9L1 1"
+          stroke="#8695AA"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          fill="none"
+        />
+      </symbol>
+    </svg>
     <!-- HEADER -->
     <header
       class="sticky top-0 z-50 bg-white pt-1 sm:pt-3 lg:pt-6 xl:pt-10 2xl:pt-12 3xl:pt-20 transition-[transform,box-shadow] duration-300 ease-in-out"
@@ -132,7 +145,7 @@
         x-transition:leave="ease-in duration-200"
         x-transition:leave-start="opacity-100 translate-x-0"
         x-transition:leave-end="opacity-0 translate-x-full"
-        class="fixed top-15.5 sm:top-18 right-0 h-screen w-full max-w-[min(20rem,85vw)] bg-white shadow-xl flex flex-col pt-24 pb-8 px-6"
+        class="fixed top-15.5 sm:top-18 right-0 h-screen w-full max-w-[min(20rem,85vw)] bg-white shadow-xl flex flex-col py-8 px-6"
         role="dialog"
         aria-modal="true"
         aria-label="Меню"
@@ -196,6 +209,12 @@
                   expandedSpb: false,
                   expandedLo: false,
                   expandedVsevolozhsk: false,
+                  spbLabels: ['Василеостровский район','Выборгский район','Калининский район','Кировский район','Колпинский район','Красногвардейский район','Красносельский район','Кронштадтский район','Курортный район','Московский район','Невский район','Петроградский район','Петродворцовый район','Фрунзенский район','Центральный район'],
+                  loLabels: ['Бокситогорский район','Волосовский район','Волховский район','Всеволожский район','Выборгский район','Гатчинский район','Кингисепский район','Киришский район','Кировский район','Лодейнопольский район','Ломоносовский район','Лужский район','Подпорожский район','Приозерский район','Сланцевский район','Сосновоборский район','Агалатовское СП','Бугровское СП','Всеволожское ГП','Дубровское ГП','Заневское ГП','Колтушское СП','Кузьмоловское ГП','Куйвозовское СП','Лесколовское СП','Морозовское ГП','Муринское ГП','Новодевяткинское СП','Рахьинское ГП','Романовское СП','Свердловское ГП','Сертоловское ГП','Токсовское ГП','Щегловское СП','Юкковское СП'],
+                  vsevolozhskLabels: ['Всеволожский район','Агалатовское СП','Бугровское СП','Всеволожское ГП','Дубровское ГП','Заневское ГП','Колтушское СП','Кузьмоловское ГП','Куйвозовское СП','Лесколовское СП','Морозовское ГП','Муринское ГП','Новодевяткинское СП','Рахьинское ГП','Романовское СП','Свердловское ГП','Сертоловское ГП','Токсовское ГП','Щегловское СП','Юкковское СП'],
+                  isSpbSelected() { return this.spbLabels.includes(this.selectedLabel); },
+                  isLoSelected() { return this.loLabels.includes(this.selectedLabel); },
+                  isVsevolozhskSelected() { return this.vsevolozhskLabels.includes(this.selectedLabel); },
                   select(label) {
                     this.selectedLabel = label;
                     this.open = false;
@@ -221,20 +240,11 @@
                   <svg
                     width="17"
                     height="10"
-                    viewBox="0 0 17 10"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
                     class="shrink-0 transition-transform duration-200"
                     :class="open && 'rotate-180'"
+                    aria-hidden="true"
                   >
-                    <path
-                      d="M15.7945 1L8.39726 9L1 1"
-                      stroke="#8695AA"
-                      stroke-width="2"
-                      stroke-miterlimit="10"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
+                    <use href="#icon-select-chevron" />
                   </svg>
                 </button>
 
@@ -257,7 +267,21 @@
                         class="w-full flex-between cursor-pointer hover:bg-brand-blue hover:text-white smooth px-5 py-2.5"
                         @click.stop="toggleSpb()"
                       >
-                        Санкт-Петербург
+                        <span>Санкт-Петербург</span>
+                        <svg
+                          x-show="isSpbSelected()"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                          class="shrink-0 size-5"
+                        >
+                          <path
+                            d="M9.00016 16.17L4.83016 12L3.41016 13.41L9.00016 19L21.0002 6.99997L19.5902 5.58997L9.00016 16.17Z"
+                            fill="currentColor"
+                          />
+                        </svg>
                       </button>
 
                       <!-- Submenu Of Districts of Saint Petersburg -->
@@ -614,10 +638,24 @@
                     <li>
                       <button
                         type="button"
-                        class="w-full text-left hover:bg-brand-blue hover:text-white smooth px-5 py-2.5"
+                        class="w-full flex-between cursor-pointer hover:bg-brand-blue hover:text-white smooth px-5 py-2.5"
                         @click.stop="toggleLo()"
                       >
-                        Ленинградская область
+                        <span>Ленинградская область</span>
+                        <svg
+                          x-show="isLoSelected()"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                          class="shrink-0 size-5"
+                        >
+                          <path
+                            d="M9.00016 16.17L4.83016 12L3.41016 13.41L9.00016 19L21.0002 6.99997L19.5902 5.58997L9.00016 16.17Z"
+                            fill="currentColor"
+                          />
+                        </svg>
                       </button>
                       <!-- Submenu of Districts of Leningrad Region -->
                       <ul x-show="expandedLo">
@@ -693,10 +731,24 @@
                         <li>
                           <button
                             type="button"
-                            class="w-full text-left hover:bg-brand-blue hover:text-white smooth pl-10 pr-5 py-2.5"
+                            class="w-full flex-between text-left hover:bg-brand-blue hover:text-white smooth pl-10 pr-5 py-2.5"
                             @click.stop="toggleVsevolozhsk()"
                           >
-                            Всеволожский район
+                            <span>Всеволожский район</span>
+                            <svg
+                              x-show="isVsevolozhskSelected()"
+                              width="24"
+                              height="24"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                              class="shrink-0 size-5"
+                            >
+                              <path
+                                d="M9.00016 16.17L4.83016 12L3.41016 13.41L9.00016 19L21.0002 6.99997L19.5902 5.58997L9.00016 16.17Z"
+                                fill="currentColor"
+                              />
+                            </svg>
                           </button>
 
                           <!-- Submenu of Allowed Territories of Vsevolozhsk District -->
@@ -1442,18 +1494,11 @@
                   <svg
                     width="17"
                     height="10"
-                    viewBox="0 0 17 10"
-                    fill="none"
                     class="shrink-0 transition-transform duration-200"
                     :class="open && 'rotate-180'"
+                    aria-hidden="true"
                   >
-                    <path
-                      d="M15.7945 1L8.39726 9L1 1"
-                      stroke="#8695AA"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
+                    <use href="#icon-select-chevron" />
                   </svg>
                 </button>
                 <ul
@@ -1502,18 +1547,11 @@
                   <svg
                     width="17"
                     height="10"
-                    viewBox="0 0 17 10"
-                    fill="none"
                     class="shrink-0 transition-transform duration-200"
                     :class="open && 'rotate-180'"
+                    aria-hidden="true"
                   >
-                    <path
-                      d="M15.7945 1L8.39726 9L1 1"
-                      stroke="#8695AA"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
+                    <use href="#icon-select-chevron" />
                   </svg>
                 </button>
                 <ul
@@ -1562,18 +1600,11 @@
                   <svg
                     width="17"
                     height="10"
-                    viewBox="0 0 17 10"
-                    fill="none"
                     class="shrink-0 transition-transform duration-200"
                     :class="open && 'rotate-180'"
+                    aria-hidden="true"
                   >
-                    <path
-                      d="M15.7945 1L8.39726 9L1 1"
-                      stroke="#8695AA"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
+                    <use href="#icon-select-chevron" />
                   </svg>
                 </button>
                 <ul
@@ -1622,18 +1653,11 @@
                   <svg
                     width="17"
                     height="10"
-                    viewBox="0 0 17 10"
-                    fill="none"
                     class="shrink-0 transition-transform duration-200"
                     :class="open && 'rotate-180'"
+                    aria-hidden="true"
                   >
-                    <path
-                      d="M15.7945 1L8.39726 9L1 1"
-                      stroke="#8695AA"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
+                    <use href="#icon-select-chevron" />
                   </svg>
                 </button>
                 <ul
@@ -1716,7 +1740,28 @@
                         <!-- Filters -->
                         <div
                           class="relative"
-                          x-data="{ filtersOpen: false }"
+                          x-data="{
+                            filtersOpen: false,
+                            filters: {
+                              water: false,
+                              gas: false,
+                              sewerage: false,
+                              heating: false,
+                              electricity: false,
+                              category_guarantee: false,
+                              business: false,
+                              business_client: false,
+                              business_all: false,
+                              work_psd: false
+                            },
+                            get filterCount() {
+                              return Object.values(this.filters).filter(Boolean).length;
+                            },
+                            clearFilters() {
+                              Object.keys(this.filters).forEach(k => this.filters[k] = false);
+                              this.filtersOpen = false;
+                            }
+                          }"
                           @click.outside="filtersOpen = false"
                         >
                           <button
@@ -1753,9 +1798,11 @@
                             </svg>
                             <span class="text_8">Фильтры</span>
                             <span
-                              class="hidden bg-brand-blue text-white text-lg/4.5 rounded-full py-1.5 px-2.25"
-                              >4</span
-                            >
+                              x-show="filterCount > 0"
+                              x-cloak
+                              x-text="filterCount"
+                              class="bg-brand-blue text-white text-lg/4.5 rounded-full py-1.5 px-2.25 min-w-[1.5rem] flex-center"
+                            ></span>
                           </button>
 
                           <!-- Filters dropdown -->
@@ -1800,7 +1847,10 @@
                                 <h4>Фильтры</h4>
 
                                 <button
-                                  class="text_8 text-brand-gray hover:text-brand-gray-dark smooth"
+                                  type="button"
+                                  class="text_8 text-brand-gray hover:text-brand-gray-dark smooth disabled:opacity-50 disabled:cursor-not-allowed"
+                                  :disabled="filterCount === 0"
+                                  @click="clearFilters()"
                                 >
                                   сбросить
                                 </button>
@@ -1826,6 +1876,7 @@
                                           type="checkbox"
                                           id="water"
                                           class="hidden peer"
+                                          x-model="filters.water"
                                         />
                                         <svg
                                           width="17"
@@ -1860,6 +1911,7 @@
                                           type="checkbox"
                                           id="gas"
                                           class="hidden peer"
+                                          x-model="filters.gas"
                                         />
                                         <svg
                                           width="17"
@@ -1894,6 +1946,7 @@
                                           type="checkbox"
                                           id="sewerage"
                                           class="hidden peer"
+                                          x-model="filters.sewerage"
                                         />
                                         <svg
                                           width="17"
@@ -1928,6 +1981,7 @@
                                           type="checkbox"
                                           id="heating"
                                           class="hidden peer"
+                                          x-model="filters.heating"
                                         />
                                         <svg
                                           width="17"
@@ -1962,6 +2016,7 @@
                                           type="checkbox"
                                           id="electricity"
                                           class="hidden peer"
+                                          x-model="filters.electricity"
                                         />
                                         <svg
                                           width="17"
@@ -1994,7 +2049,7 @@
                                 <ul class="text_9 space-y-4">
                                   <li>
                                     <label
-                                      for="guarantee"
+                                      for="filter_guarantee"
                                       class="flex-base gap-3.25 cursor-pointer"
                                     >
                                       <div
@@ -2002,8 +2057,9 @@
                                       >
                                         <input
                                           type="checkbox"
-                                          id="guarantee"
+                                          id="filter_guarantee"
                                           class="hidden peer"
+                                          x-model="filters.category_guarantee"
                                         />
                                         <svg
                                           width="17"
@@ -2028,7 +2084,7 @@
                                   </li>
                                   <li>
                                     <label
-                                      for="resource"
+                                      for="category_resource"
                                       class="flex-base gap-3.25 group text-brand-gray-dark cursor-not-allowed"
                                     >
                                       <div
@@ -2036,7 +2092,7 @@
                                       >
                                         <input
                                           type="checkbox"
-                                          id="resource"
+                                          id="category_resource"
                                           class="hidden peer"
                                           disabled
                                         />
@@ -2065,7 +2121,7 @@
                                   </li>
                                   <li>
                                     <label
-                                      for="contractor"
+                                      for="category_contractor"
                                       class="flex-base gap-3.25 group text-brand-gray-dark cursor-not-allowed"
                                     >
                                       <div
@@ -2073,7 +2129,7 @@
                                       >
                                         <input
                                           type="checkbox"
-                                          id="contractor"
+                                          id="category_contractor"
                                           class="hidden peer"
                                           disabled
                                         />
@@ -2118,6 +2174,7 @@
                                           type="checkbox"
                                           id="business"
                                           class="hidden peer"
+                                          x-model="filters.business"
                                         />
                                         <svg
                                           width="17"
@@ -2152,6 +2209,7 @@
                                           type="checkbox"
                                           id="business_client"
                                           class="hidden peer"
+                                          x-model="filters.business_client"
                                         />
                                         <svg
                                           width="17"
@@ -2186,6 +2244,7 @@
                                           type="checkbox"
                                           id="business_all"
                                           class="hidden peer"
+                                          x-model="filters.business_all"
                                         />
                                         <svg
                                           width="17"
@@ -2218,7 +2277,7 @@
                                 <ul class="text_9 space-y-4">
                                   <li>
                                     <label
-                                      for="guarantee"
+                                      for="work_cmp"
                                       class="flex-base gap-3.25 group text-brand-gray-dark cursor-not-allowed"
                                     >
                                       <div
@@ -2226,7 +2285,7 @@
                                       >
                                         <input
                                           type="checkbox"
-                                          id="guarantee"
+                                          id="work_cmp"
                                           class="hidden peer"
                                           disabled
                                         />
@@ -2253,16 +2312,17 @@
                                   </li>
                                   <li>
                                     <label
-                                      for="resource"
-                                      class="flex-base gap-3.25 group"
+                                      for="work_psd"
+                                      class="flex-base gap-3.25 group cursor-pointer"
                                     >
                                       <div
                                         class="size-6 flex-center border border-brand-dark"
                                       >
                                         <input
                                           type="checkbox"
-                                          id="resource"
+                                          id="work_psd"
                                           class="hidden peer"
+                                          x-model="filters.work_psd"
                                         />
                                         <svg
                                           width="17"

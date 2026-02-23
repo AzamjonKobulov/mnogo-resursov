@@ -140,7 +140,7 @@
         x-transition:leave="ease-in duration-200"
         x-transition:leave-start="opacity-100 translate-x-0"
         x-transition:leave-end="opacity-0 translate-x-full"
-        class="fixed top-15.5 sm:top-18 right-0 h-screen w-full max-w-[min(20rem,85vw)] bg-white shadow-xl flex flex-col pt-24 pb-8 px-6"
+        class="fixed top-15.5 sm:top-18 right-0 h-screen w-full max-w-[min(20rem,85vw)] bg-white shadow-xl flex flex-col py-8 px-6"
         role="dialog"
         aria-modal="true"
         aria-label="Меню"
@@ -519,6 +519,10 @@
                 </div>
               </div>
             </div>
+
+            <div class="flex-center">
+              <button class="button_3 max-w-125 w-full">Присоединиться</button>
+            </div>
           </div>
         </div>
       </section>
@@ -679,7 +683,7 @@
           <div
             x-data="reviewModalForm()"
             :key="$store.reviewModalOpenCount"
-            class="relative"
+            class="relative w-full xs:w-auto"
           >
             <form
               class="relative max-h-[90vh] overflow-y-auto max-w-150 w-full space-y-5 bg-white rounded-brand-base p-5 xs:p-6 md:p-10"
