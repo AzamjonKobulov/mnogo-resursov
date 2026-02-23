@@ -135,7 +135,7 @@ document.addEventListener("alpine:init", () => {
         slidesPerGroup: 1,
         spaceBetween: 24,
         breakpoints: {
-          768: { slidesPerView: 2, slidesPerGroup: 2 },
+          768: { slidesPerView: 2, slidesPerGroup: 1 },
           1024: { slidesPerView: 1, slidesPerGroup: 1 },
         },
         navigation: {

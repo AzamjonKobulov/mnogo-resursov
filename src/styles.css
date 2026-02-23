@@ -138,7 +138,8 @@
 .button_3,
 .button_4,
 .button_5,
-.button_6 {
+.button_6,
+.button_poppup_filter {
   @apply font-semibold border border-brand-blue bg-brand-blue text-white hover:bg-white hover:text-brand-gray hover:border-brand-gray smooth;
 }
 
@@ -164,6 +165,10 @@
 
 @utility button_6 {
   @apply text_3 rounded-xl py-2.5 px-20 xl:px-30;
+}
+
+@utility button_poppup_filter {
+  @apply button_3 w-full 3xl:text-2xl/7.5 px-4 py-2.5 sm:py-3 3xl:py-3.75  3xl:px-10;
 }
 
 /* Other utilities */
