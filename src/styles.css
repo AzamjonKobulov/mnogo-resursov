@@ -171,6 +171,19 @@
   @apply button_3 w-full 3xl:text-2xl/7.5 px-4 py-2.5 sm:py-3 3xl:py-3.75  3xl:px-10;
 }
 
+/* Tooltip – white box, rounded, border; show on group-hover; fixed so no scroll and always on top */
+@utility tooltip-popup {
+  @apply absolute left-1/2 -translate-x-1/2 bottom-full mb-1.5 px-3 py-2 bg-white border border-brand-gray rounded-lg text_1 text-brand-gray-dark whitespace-nowrap opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-[100] pointer-events-none shadow-md;
+}
+
+@utility tooltip-popup-below {
+  @apply absolute left-1/2 -translate-x-1/2 top-full mt-1.5 px-3 py-2 bg-white border border-brand-gray rounded-lg text_1 text-brand-gray-dark whitespace-nowrap opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-[100] pointer-events-none shadow-md;
+}
+
+@utility tooltip-popup-below-wide {
+  @apply absolute left-1/2 -translate-x-1/2 top-full mt-1.5 px-3 py-2 bg-white border border-brand-gray rounded-lg text_1 text-brand-gray-dark max-w-64 text-center opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-[100] pointer-events-none shadow-md;
+}
+
 /* Other utilities */
 @utility smooth {
   @apply transition-all duration-300 ease-in-out;

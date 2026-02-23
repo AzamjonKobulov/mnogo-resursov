@@ -79,6 +79,11 @@ const ABOUT_REVIEWS_DATA = [
 document.addEventListener("alpine:init", () => {
   // Scroll store for header shadow (scrollY > 64 or mobile menu open)
   Alpine.store("scroll", { y: 0 });
+  // Review modal: open/close from any scope (e.g. "Оставить отзыв" button in reviews)
+  Alpine.store("reviewModalOpen", false);
+  Alpine.store("reviewModalOpenCount", 0);
+  // Star rating state for review modal (remount via key so rating resets on open)
+  Alpine.data("reviewModalForm", () => ({ rating: 0, hoverRating: 0 }));
   const setScrollY = () =>
     (Alpine.store("scroll").y = window.scrollY ?? window.pageYOffset);
   setScrollY();

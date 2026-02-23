@@ -8,11 +8,19 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
     />
+    <!-- Alpine.js + Swiper.js: Users Reviews -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="js/script.js"></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <title>МНОГОРЕСУРСОВ</title>
   </head>
   <body
-    x-data="{ mobileMenuOpen: false }"
-    x-effect="document.body.style.overflow = mobileMenuOpen ? 'hidden' : ''"
+    x-data="{ mobileMenuOpen: false, requestModalOpen: false }"
+    x-effect="document.body.style.overflow = (mobileMenuOpen || $store.reviewModalOpen || requestModalOpen) ? 'hidden' : ''"
   >
     <!-- HEADER -->
     <header
@@ -45,9 +53,12 @@
               </a>
             </li>
             <li>
-              <a href="/" class="hover:underline underline-offset-1">
-                Помощь в подборе
-              </a>
+              <a
+                href="#"
+                class="hover:underline underline-offset-1"
+                @click.prevent="requestModalOpen = true"
+                >Помощь в подборе</a
+              >
             </li>
           </ul>
 
@@ -155,7 +166,7 @@
             <a
               href="/"
               class="hover:underline underline-offset-1 block py-1"
-              @click="mobileMenuOpen = false"
+              @click.prevent="mobileMenuOpen = false; requestModalOpen = true"
               >Помощь в подборе</a
             >
           </li>
@@ -572,80 +583,347 @@
               </div>
             </div>
 
-            <div class="flex-end gap-3 lg:gap-6.5 mt-5">
+            <div class="flex-between flex-col xs:flex-row gap-4 mt-5">
               <button
                 type="button"
-                class="reviews-swiper-prev hover:text-brand-blue disabled:text-brand-gray hover:bg-brand-gray-light-2 rounded smooth p-2 disabled:opacity-50 disabled:cursor-not-allowed"
-                :disabled="!swiper || isBeginning"
-                @click="swiper && swiper.slidePrev()"
-                aria-label="Предыдущий отзыв"
+                class="button_3 order-2 xs:order-1"
+                @click="$store.reviewModalOpen = true; $store.reviewModalOpenCount = $store.reviewModalOpenCount + 1"
               >
-                <svg
-                  width="48"
-                  height="48"
-                  viewBox="0 0 48 48"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="size-10 lg:size-12"
-                >
-                  <path
-                    d="M38 24H10"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                  <path
-                    d="M24 38L10 24L24 10"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
+                Оставить отзыв
               </button>
-              <button
-                type="button"
-                class="reviews-swiper-next hover:text-brand-blue disabled:text-brand-gray hover:bg-brand-gray-light-2 rounded smooth p-2 disabled:opacity-50 disabled:cursor-not-allowed"
-                :disabled="!swiper || isEnd"
-                @click="swiper && swiper.slideNext()"
-                aria-label="Следующий отзыв"
-              >
-                <svg
-                  width="48"
-                  height="48"
-                  viewBox="0 0 48 48"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="size-10 lg:size-12 rotate-180"
+              <div class="flex-end gap-3 lg:gap-6.5 order-1 xs:order-2">
+                <button
+                  type="button"
+                  class="reviews-swiper-prev hover:text-brand-blue disabled:text-brand-gray hover:bg-brand-gray-light-2 rounded smooth p-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                  :disabled="!swiper || isBeginning"
+                  @click="swiper && swiper.slidePrev()"
+                  aria-label="Предыдущий отзыв"
                 >
-                  <path
-                    d="M38 24H10"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                  <path
-                    d="M24 38L10 24L24 10"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              </button>
+                  <svg
+                    width="48"
+                    height="48"
+                    viewBox="0 0 48 48"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="size-10 lg:size-12"
+                  >
+                    <path
+                      d="M38 24H10"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M24 38L10 24L24 10"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </button>
+                <button
+                  type="button"
+                  class="reviews-swiper-next hover:text-brand-blue disabled:text-brand-gray hover:bg-brand-gray-light-2 rounded smooth p-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                  :disabled="!swiper || isEnd"
+                  @click="swiper && swiper.slideNext()"
+                  aria-label="Следующий отзыв"
+                >
+                  <svg
+                    width="48"
+                    height="48"
+                    viewBox="0 0 48 48"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="size-10 lg:size-12 rotate-180"
+                  >
+                    <path
+                      d="M38 24H10"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M24 38L10 24L24 10"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </button>
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- Alpine.js + Swiper.js: Users Reviews -->
-        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-        <script src="js/script.js"></script>
-        <script
-          defer
-          src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
-        ></script>
+        <!-- Leave a Review Modal -->
+        <div
+          x-show="$store.reviewModalOpen"
+          x-cloak
+          class="fixed inset-0 z-50 bg-black/50 flex-center px-4"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="review-modal-title"
+          @keydown.escape.window="$store.reviewModalOpen = false"
+          @click="$store.reviewModalOpen = false"
+          x-transition:enter="transition ease-out duration-200"
+          x-transition:enter-start="opacity-0"
+          x-transition:enter-end="opacity-100"
+          x-transition:leave="transition ease-in duration-150"
+          x-transition:leave-start="opacity-100"
+          x-transition:leave-end="opacity-0"
+        >
+          <div
+            x-data="reviewModalForm()"
+            :key="$store.reviewModalOpenCount"
+            class="relative"
+          >
+            <form
+              class="relative max-h-[90vh] overflow-y-auto max-w-150 w-full space-y-5 bg-white rounded-brand-base p-5 xs:p-6 md:p-10"
+              @click.stop
+              x-show="$store.reviewModalOpen"
+              x-transition:enter="transition ease-out duration-200"
+              x-transition:enter-start="opacity-0 scale-95"
+              x-transition:enter-end="opacity-100 scale-100"
+              x-transition:leave="transition ease-in duration-150"
+              x-transition:leave-start="opacity-100 scale-100"
+              x-transition:leave-end="opacity-0 scale-95"
+            >
+              <button
+                type="button"
+                class="absolute top-5 right-5 xs:right-6 xs:top-6 md:top-10 md:right-10 p-1 -mr-1 rounded-lg hover:bg-brand-gray-light smooth text-brand-dark"
+                aria-label="Закрыть"
+                @click="$store.reviewModalOpen = false"
+              >
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M4.99951 18.998L11.9995 11.998M11.9995 11.998L18.9995 4.99805M11.9995 11.998L4.99951 4.99805M11.9995 11.998L18.9995 18.998"
+                    stroke="#193760"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </button>
+
+              <!-- Modal Header -->
+              <div
+                class="flex-between flex-col items-start sm:flex-row sm:items-center gap-3 mt-5 2xs:mt-8 sm:mt-12"
+              >
+                <h4 id="review-modal-title">Оставьте отзыв</h4>
+                <!-- Star Rating -->
+                <div
+                  class="flex-base gap-1 2xs:gap-1.5 xs:gap-2.5"
+                  @mouseleave="hoverRating = 0"
+                >
+                  <template x-for="i in 5" :key="i">
+                    <button
+                      type="button"
+                      :aria-label="'Оценка ' + i + ' из 5'"
+                      class="p-0.5 rounded hover:opacity-80 smooth"
+                      @click="rating = i"
+                      @mouseenter="hoverRating = i"
+                    >
+                      <svg
+                        width="32"
+                        height="32"
+                        viewBox="0 0 32 32"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="size-5 xs:size-6 lg:size-auto"
+                      >
+                        <path
+                          d="M15.9989 2.66663L20.1189 11.0133L29.3322 12.36L22.6655 18.8533L24.2389 28.0266L15.9989 23.6933L7.75886 28.0266L9.33219 18.8533L2.66553 12.36L11.8789 11.0133L15.9989 2.66663Z"
+                          :fill="(hoverRating || rating) >= i ? '#1450A3' : 'none'"
+                          stroke="#1450A3"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+                    </button>
+                  </template>
+                </div>
+              </div>
+
+              <!-- Modal Content -->
+              <div class="space-y-3 xs:space-y-6 text-brand-gray-dark">
+                <div class="grid xs:grid-cols-2 gap-4">
+                  <label for="name">
+                    <input
+                      type="text"
+                      placeholder="Имя"
+                      class="w-full text_9 bg-brand-gray-light-2 rounded-brand-base outline-brand-dark p-4"
+                    />
+                  </label>
+                  <label for="activity">
+                    <input
+                      type="text"
+                      placeholder="Род деятельности"
+                      class="w-full text_9 bg-brand-gray-light-2 rounded-brand-base outline-brand-dark p-4"
+                    />
+                  </label>
+                  <label for="question" class="xs:col-span-2">
+                    <input
+                      type="text"
+                      placeholder="Обращение в компанию по вопросу"
+                      class="w-full text_9 bg-brand-gray-light-2 rounded-brand-base outline-brand-dark p-4"
+                    />
+                  </label>
+                  <label for="question" class="xs:col-span-2">
+                    <textarea
+                      placeholder="Ваш комментарий"
+                      class="w-full min-h-45 text_9 bg-brand-gray-light-2 rounded-brand-base outline-brand-dark p-4"
+                    ></textarea>
+                  </label>
+                </div>
+                <label
+                  for="recomment"
+                  class="flex-base gap-2.5 cursor-pointer text_9 text-brand-gray-dark"
+                >
+                  <input type="checkbox" id="recomment" class="hidden peer" />
+
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="peer-checked:hidden size-4 xs:size-auto"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M12 24C13.5759 24 15.1363 23.6896 16.5922 23.0866C18.0481 22.4835 19.371 21.5996 20.4853 20.4853C21.5996 19.371 22.4835 18.0481 23.0866 16.5922C23.6896 15.1363 24 13.5759 24 12C24 10.4241 23.6896 8.86371 23.0866 7.4078C22.4835 5.95189 21.5996 4.62902 20.4853 3.51472C19.371 2.40042 18.0481 1.5165 16.5922 0.913445C15.1363 0.310389 13.5759 -2.34822e-08 12 0C8.8174 4.74244e-08 5.76516 1.26428 3.51472 3.51472C1.26428 5.76515 0 8.8174 0 12C0 15.1826 1.26428 18.2348 3.51472 20.4853C5.76516 22.7357 8.8174 24 12 24ZM11.6907 16.8533L18.3573 8.85333L16.3093 7.14667L10.576 14.0253L7.60933 11.0573L5.724 12.9427L9.724 16.9427L10.756 17.9747L11.6907 16.8533Z"
+                      fill="#8695AA"
+                    />
+                  </svg>
+
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="hidden peer-checked:block size-4 xs:size-auto"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M12 24C13.5759 24 15.1363 23.6896 16.5922 23.0866C18.0481 22.4835 19.371 21.5996 20.4853 20.4853C21.5996 19.371 22.4835 18.0481 23.0866 16.5922C23.6896 15.1363 24 13.5759 24 12C24 10.4241 23.6896 8.86371 23.0866 7.4078C22.4835 5.95189 21.5996 4.62902 20.4853 3.51472C19.371 2.40042 18.0481 1.5165 16.5922 0.913445C15.1363 0.310389 13.5759 -2.34822e-08 12 0C8.8174 4.74244e-08 5.76516 1.26428 3.51472 3.51472C1.26428 5.76515 0 8.8174 0 12C0 15.1826 1.26428 18.2348 3.51472 20.4853C5.76516 22.7357 8.8174 24 12 24ZM11.6907 16.8533L18.3573 8.85333L16.3093 7.14667L10.576 14.0253L7.60933 11.0573L5.724 12.9427L9.724 16.9427L10.756 17.9747L11.6907 16.8533Z"
+                      fill="#1450A3"
+                    />
+                  </svg>
+
+                  <span class="peer-checked:text-brand-blue"
+                    >Рекомендуете компанию?</span
+                  >
+                </label>
+              </div>
+
+              <button
+                type="submit"
+                class="button_3 w-full mt-3 lg:mt-6"
+                @click.prevent="$store.reviewModalOpen = false"
+              >
+                Оставить отзыв
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- Plans -->
+      <section id="prices" class="pb-10 sm:pb-16 md:pb-25 lg:pb-50">
+        <div class="container-base space-y-10 lg:space-y-15">
+          <div class="space-y-2">
+            <h2>Выберите подходящую услугу</h2>
+            <p class="text_2 max-w-5xl text-brand-gray-dark">
+              Подключайте услуги и сокращайте время на поиск организации или
+              эффективней привлекайте новых клиентов
+            </p>
+          </div>
+
+          <!-- Plans -->
+          <div
+            class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-8 lg:gap-10"
+          >
+            <div
+              class="space-y-5 lg:space-y-6 3xl:space-y-10 bg-brand-gray-light-2 rounded-brand-base lg:rounded-brand-3xl py-6 px-5 lg:px-6 3xl:p-10"
+            >
+              <div class="space-y-2.5">
+                <h4>Подбор организации</h4>
+                <p class="text_2 text-brand-gray-dark">
+                  Устали искать? Довертье дело нам. Подберем для Вас нужную
+                  компанию
+                </p>
+                <p class="text-xl/6.25 lg:text-2xl/8 3xl:text-[32px]/9.75">
+                  <span class="font-semibold">от 1 500 ₽</span> / подбор
+                </p>
+              </div>
+
+              <button
+                type="button"
+                class="button_3"
+                @click="requestModalOpen = true"
+              >
+                Оставить заявку
+              </button>
+            </div>
+            <div
+              class="space-y-5 lg:space-y-6 3xl:space-y-10 bg-brand-gray-light-2 rounded-brand-base lg:rounded-brand-3xl py-6 px-5 lg:px-6 3xl:p-10"
+            >
+              <div class="space-y-2.5">
+                <h4>Подбор организации</h4>
+                <p class="text_2 text-brand-gray-dark">
+                  Устали искать? Довертье дело нам. Подберем для Вас нужную
+                  компанию
+                </p>
+                <p class="text-xl/6.25 lg:text-2xl/8 3xl:text-[32px]/9.75">
+                  <span class="font-semibold">от 1 500 ₽</span> / подбор
+                </p>
+              </div>
+
+              <button
+                type="button"
+                class="button_3"
+                @click="requestModalOpen = true"
+              >
+                Оставить заявку
+              </button>
+            </div>
+            <div
+              class="space-y-5 lg:space-y-6 3xl:space-y-10 bg-brand-gray-light-2 rounded-brand-base lg:rounded-brand-3xl py-6 px-5 lg:px-6 3xl:p-10"
+            >
+              <div class="space-y-2.5">
+                <h4>Подбор организации</h4>
+                <p class="text_2 text-brand-gray-dark">
+                  Устали искать? Довертье дело нам. Подберем для Вас нужную
+                  компанию
+                </p>
+                <p class="text-xl/6.25 lg:text-2xl/8 3xl:text-[32px]/9.75">
+                  <span class="font-semibold">от 1 500 ₽</span> / подбор
+                </p>
+              </div>
+
+              <button
+                type="button"
+                class="button_3"
+                @click="requestModalOpen = true"
+              >
+                Оставить заявку
+              </button>
+            </div>
+          </div>
+        </div>
       </section>
 
       <!-- Need Help -->
@@ -660,12 +938,24 @@
               class="size-full object-cover"
             />
           </div>
-          <div class="space-y-3 sm:space-y-5 text-center lg:text-left">
-            <h2>Нужна помощь в подборе подходящей компании?</h2>
-            <p class="text_2 text-brand-gray-dark">
-              Поручите задачу нам − наши специалисты подберут оптимальную
-              сетевую организацию
-            </p>
+          <div class="space-y-5 md:space-y-7.5 lg:space-y-10">
+            <div class="space-y-3 sm:space-y-5 text-center lg:text-left">
+              <h2>Нужна помощь в подборе подходящей компании?</h2>
+              <p class="text_2 text-brand-gray-dark">
+                Поручите задачу нам − наши специалисты подберут оптимальную
+                сетевую организацию
+              </p>
+            </div>
+
+            <div class="flex-center lg:justify-start">
+              <button
+                type="button"
+                class="button_2"
+                @click="requestModalOpen = true"
+              >
+                Оставить заявку
+              </button>
+            </div>
           </div>
         </div>
       </section>
@@ -714,7 +1004,10 @@
                   >
                 </li>
                 <li>
-                  <a href="/" class="hover:underline underline-offset-1"
+                  <a
+                    href="#"
+                    class="hover:underline underline-offset-1"
+                    @click.prevent="requestModalOpen = true"
                     >Помощь в подборе</a
                   >
                 </li>
@@ -811,5 +1104,180 @@
         </div>
       </div>
     </footer>
+
+    <!-- Request modal (left): Оставить заявку — Имя+Телефон row, Комментарий -->
+    <div
+      x-show="requestModalOpen"
+      x-cloak
+      class="fixed inset-0 z-50 bg-black/50 flex-center px-4"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="request-modal-title"
+      @keydown.escape.window="requestModalOpen = false"
+      @click="requestModalOpen = false"
+      x-transition:enter="transition ease-out duration-200"
+      x-transition:enter-start="opacity-0"
+      x-transition:enter-end="opacity-100"
+      x-transition:leave="transition ease-in duration-150"
+      x-transition:leave-start="opacity-100"
+      x-transition:leave-end="opacity-0"
+    >
+      <div class="relative">
+        <form
+          class="relative max-h-[90vh] overflow-y-auto max-w-125 w-full space-y-4 bg-white rounded-brand-base pt-12 pb-5 xs:pb-6 md:pb-8 px-5 xs:px-6 md:px-8"
+          @click.stop
+          x-show="requestModalOpen"
+          x-transition:enter="transition ease-out duration-200"
+          x-transition:enter-start="opacity-0 scale-95"
+          x-transition:enter-end="opacity-100 scale-100"
+          x-transition:leave="transition ease-in duration-150"
+          x-transition:leave-start="opacity-100 scale-100"
+          x-transition:leave-end="opacity-0 scale-95"
+          @submit.prevent="requestModalOpen = false"
+        >
+          <button
+            type="button"
+            class="absolute top-5 right-5 xs:right-6 md:top-6 md:right-6 p-1 -mr-1 rounded-lg hover:bg-brand-gray-light smooth text-brand-dark"
+            aria-label="Закрыть"
+            @click="requestModalOpen = false"
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M4.99951 18.998L11.9995 11.998M11.9995 11.998L18.9995 4.99805M11.9995 11.998L4.99951 4.99805M11.9995 11.998L18.9995 18.998"
+                stroke="#193760"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+          <div class="flex-center">
+            <h4 id="request-modal-title text-center">Оставить заявку</h4>
+          </div>
+          <div class="grid grid-cols-2 gap-4">
+            <label class="sr-only" for="request-name-1">Имя</label>
+            <input
+              id="request-name-1"
+              type="text"
+              required
+              placeholder="Имя*"
+              class="w-full text_9 bg-brand-gray-light-2 rounded-brand-base outline-brand-dark p-4"
+            />
+            <label class="sr-only" for="request-phone-1">Телефон</label>
+            <input
+              id="request-phone-1"
+              type="tel"
+              required
+              placeholder="Телефон*"
+              class="w-full text_9 bg-brand-gray-light-2 rounded-brand-base outline-brand-dark p-4"
+            />
+          </div>
+          <label class="sr-only" for="request-comment-1">Комментарий</label>
+          <textarea
+            id="request-comment-1"
+            placeholder="Комментарий"
+            rows="4"
+            class="w-full text_9 bg-brand-gray-light-2 rounded-brand-base outline-brand-dark p-4 resize-none"
+          ></textarea>
+          <div
+            class="g-recaptcha"
+            data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
+            data-theme="light"
+            data-size="normal"
+            aria-colspan="max-w-75"
+          ></div>
+          <button type="submit" class="button_3 w-full">Отправить</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Request modal (right): stacked layout + Почта — hidden -->
+    <div
+      class="hidden fixed inset-0 z-[100] bg-black/50 flex-center px-4"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="request-modal-title-2"
+      aria-hidden="true"
+    >
+      <div class="relative">
+        <form
+          class="relative max-h-[90vh] overflow-y-auto max-w-125 w-full space-y-4 bg-white rounded-brand-base pt-12 pb-5 xs:pb-6 md:pb-8 px-5 xs:px-6 md:px-8"
+          @click.stop
+        >
+          <button
+            type="button"
+            class="absolute top-5 right-5 xs:right-6 md:top-6 md:right-6 p-1 -mr-1 rounded-lg hover:bg-brand-gray-light smooth text-brand-dark"
+            aria-label="Закрыть"
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M4.99951 18.998L11.9995 11.998M11.9995 11.998L18.9995 4.99805M11.9995 11.998L4.99951 4.99805M11.9995 11.998L18.9995 18.998"
+                stroke="#193760"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+          <div class="flex-center">
+            <h4 id="request-modal-title-2" class="text-center">
+              Оставить заявку
+            </h4>
+          </div>
+          <div class="space-y-4">
+            <label class="sr-only" for="request-name-2">Имя</label>
+            <input
+              id="request-name-2"
+              type="text"
+              required
+              placeholder="Имя*"
+              class="w-full text_9 bg-brand-gray-light-2 rounded-brand-base outline-brand-dark p-4"
+            />
+            <label class="sr-only" for="request-phone-2">Телефон</label>
+            <input
+              id="request-phone-2"
+              type="tel"
+              required
+              placeholder="Телефон*"
+              class="w-full text_9 bg-brand-gray-light-2 rounded-brand-base outline-brand-dark p-4"
+            />
+            <label class="sr-only" for="request-email-2">Почта</label>
+            <input
+              id="request-email-2"
+              type="email"
+              placeholder="Почта"
+              class="w-full text_9 bg-brand-gray-light-2 rounded-brand-base outline-brand-dark p-4"
+            />
+            <label class="sr-only" for="request-comment-2">Комментарий</label>
+            <textarea
+              id="request-comment-2"
+              placeholder="Комментарий"
+              rows="4"
+              class="w-full text_9 bg-brand-gray-light-2 rounded-brand-base outline-brand-dark p-4 resize-none"
+            ></textarea>
+          </div>
+          <div
+            class="g-recaptcha"
+            data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
+            data-theme="light"
+            data-size="normal"
+            aria-colspan="max-w-75"
+          ></div>
+          <button type="submit" class="button_3 w-full">Отправить</button>
+        </form>
+      </div>
+    </div>
   </body>
 </html>

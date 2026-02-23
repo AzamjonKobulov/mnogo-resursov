@@ -45,9 +45,12 @@
               </a>
             </li>
             <li>
-              <a href="/" class="hover:underline underline-offset-1">
-                Помощь в подборе
-              </a>
+              <a
+                href="#"
+                class="hover:underline underline-offset-1"
+                @click.prevent="requestModalOpen = true"
+                >Помощь в подборе</a
+              >
             </li>
           </ul>
 
@@ -155,7 +158,7 @@
             <a
               href="/"
               class="hover:underline underline-offset-1 block py-1"
-              @click="mobileMenuOpen = false"
+              @click.prevent="mobileMenuOpen = false; requestModalOpen = true"
               >Помощь в подборе</a
             >
           </li>
@@ -2476,7 +2479,10 @@
                   >
                 </li>
                 <li>
-                  <a href="/" class="hover:underline underline-offset-1"
+                  <a
+                    href="#"
+                    class="hover:underline underline-offset-1"
+                    @click.prevent="requestModalOpen = true"
                     >Помощь в подборе</a
                   >
                 </li>
@@ -2538,6 +2544,124 @@
         </div>
       </div>
     </footer>
+
+    <!-- Request modal: Оставить заявку -->
+    <div
+      x-show="requestModalOpen"
+      x-cloak
+      class="fixed inset-0 z-[100] flex items-center justify-center p-4"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="request-modal-title-search"
+      @keydown.escape.window="requestModalOpen = false"
+    >
+      <div
+        class="absolute inset-0 bg-brand-gray-dark/40"
+        @click="requestModalOpen = false"
+      ></div>
+      <div
+        x-show="requestModalOpen"
+        x-transition:enter="transition ease-out duration-200"
+        x-transition:enter-start="opacity-0 scale-95"
+        x-transition:enter-end="opacity-100 scale-100"
+        x-transition:leave="transition ease-in duration-150"
+        x-transition:leave-start="opacity-100 scale-100"
+        x-transition:leave-end="opacity-0 scale-95"
+        class="relative w-full max-w-md bg-white rounded-2xl shadow-2xl overflow-hidden"
+        @click.stop
+      >
+        <div class="p-6 xs:p-8">
+          <div class="flex justify-end mb-2">
+            <button
+              type="button"
+              class="p-1 -mr-1 rounded-lg hover:bg-brand-gray-light smooth text-brand-dark"
+              aria-label="Закрыть"
+              @click="requestModalOpen = false"
+            >
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+              >
+                <path
+                  d="M5 18.998L12 11.998M12 11.998L19 4.99805M12 11.998L5 4.99805M12 11.998L19 18.998"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+          </div>
+          <h2
+            id="request-modal-title-search"
+            class="text-xl font-semibold text-brand-dark text-center mb-6"
+          >
+            Оставить заявку
+          </h2>
+          <form class="space-y-4" @submit.prevent="requestModalOpen = false">
+            <div>
+              <label for="request-name-search" class="sr-only">Имя</label>
+              <input
+                type="text"
+                id="request-name-search"
+                required
+                placeholder="Имя*"
+                class="w-full px-4 py-3 bg-brand-gray-light rounded-xl text-brand-dark placeholder:text-brand-gray-dark border-0 text_2"
+              />
+            </div>
+            <div>
+              <label for="request-phone-search" class="sr-only">Телефон</label>
+              <input
+                type="tel"
+                id="request-phone-search"
+                required
+                placeholder="Телефон*"
+                class="w-full px-4 py-3 bg-brand-gray-light rounded-xl text-brand-dark placeholder:text-brand-gray-dark border-0 text_2"
+              />
+            </div>
+            <div>
+              <label for="request-email-search" class="sr-only">Почта</label>
+              <input
+                type="email"
+                id="request-email-search"
+                placeholder="Почта"
+                class="w-full px-4 py-3 bg-brand-gray-light rounded-xl text-brand-dark placeholder:text-brand-gray-dark border-0 text_2"
+              />
+            </div>
+            <div>
+              <label for="request-comment-search" class="sr-only"
+                >Комментарий</label
+              >
+              <textarea
+                id="request-comment-search"
+                rows="4"
+                placeholder="Комментарий"
+                class="w-full px-4 py-3 bg-brand-gray-light rounded-xl text-brand-dark placeholder:text-brand-gray-dark border-0 text_2 resize-none"
+              ></textarea>
+            </div>
+            <div class="flex justify-center py-2">
+              <div
+                class="inline-flex items-center gap-2 px-3 py-2 bg-brand-gray-light rounded-lg text_2 text-brand-gray-dark"
+                role="presentation"
+              >
+                <span
+                  class="size-5 border-2 border-brand-gray-dark rounded-sm flex-shrink-0"
+                  aria-hidden="true"
+                ></span>
+                <span>I'm not a robot</span>
+              </div>
+            </div>
+            <button type="submit" class="button_3 w-full justify-center py-3.5">
+              Отправить
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="js/script.js"></script>
